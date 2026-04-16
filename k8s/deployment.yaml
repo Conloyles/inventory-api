@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
-  name: Invenotory-api
+metadata:
+  name: inventory-api
   labels:
     app: inventory-api
 spec:
-  replicas: 1
-  selector: 
+  replicas: 2
+  selector:
     matchLabels:
       app: inventory-api
   template:
@@ -15,12 +15,14 @@ spec:
         app: inventory-api
     spec:
       containers:
-        - name: inventory-api
-          image: inventory-api:latest
-          ports:
-          - containerPort: 5000
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "500m"
-              
+      - name: inventory-api
+        image: inventory-api:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
