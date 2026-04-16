@@ -17,6 +17,7 @@ spec:
       containers:
       - name: inventory-api
         image: inventory-api:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
         resources:
