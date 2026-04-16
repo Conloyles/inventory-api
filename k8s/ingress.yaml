@@ -1,0 +1,17 @@
+apiVersion: networking.k8.io/v1
+kind: Ingress
+metadata: 
+  name: inventory-api
+  annotations:
+    traefik.ingress.kubernetees.io/router.entrypoints: web
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: inventory-api
+            port:
+              number: 80
