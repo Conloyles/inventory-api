@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from prometheus_flask_exporter import PrometheusMetrics
+from cluster_assistant import ask_cluster
 
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
@@ -26,6 +27,16 @@ def get_item(item_id):
     if item:
         return jsonify(item), 200
     return jsonify({"error": "Item not found"}), 404
+
+@app.route("/cluster/ask", methods=["POST"])
+def cluster_ask():
+    data = request.get_json()
+    if not data or "question" not in data:
+        return jsonify({"error": "Please provide a question"}), 400
+    
+    question = data["question"]
+    result = ask_cluster(question)
+    return jsonify(result), 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
