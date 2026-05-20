@@ -6,7 +6,7 @@ on:
 
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: conloyles/inverntory-api
+    IMAGE_NAME: conloyles/inventory-api
 
 jobs:
     build-and-push:
@@ -49,5 +49,5 @@ jobs:
                     cd ~/inventory-api
                     git pull
                     sudo k3s ctr images pull ghcr.io/conloyles/inventory-api:latest
-                    kuebctl set image deployment/inventory-api inventory-api=ghcr.io/conloyles/inventory-api:latest
+                    kubectl set image deployment/inventory-api inventory-api=ghcr.io/conloyles/inventory-api:latest
                     kubectl rollout status deployment/inventory-api
