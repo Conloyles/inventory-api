@@ -12,15 +12,15 @@ The Inventory API simulates a real-world retail inventory system — the kind th
 
 ## Architecture
 User Request
-↓
+    ↓
 Traefik Ingress (K3s)
-↓
+    ↓
 Kubernetes Service
-↓
+    ↓
 Flask API (Deployment — 2 replicas)
-↓
+    ↓
 In-memory inventory store → (planned: AWS RDS)
-↓
+    ↓
 JSON Response
 
 **AI Cluster Assistant** — A natural language interface powered by Ollama (Mistral model) that allows engineers to query cluster health without needing to know kubectl commands. Ask "Are any of my pods unhealthy?" and get a plain-English answer with live cluster data.
@@ -88,13 +88,13 @@ curl -X POST http://localhost/cluster/ask \
 ## CI/CD Pipeline
 
 Git push to main
-↓
+    ↓
 GitHub Actions (self-hosted runner)
-↓
+    ↓
 Docker multi-stage build
-↓
+    ↓
 Push image to GHCR
-↓
+    ↓
 kubectl rollout to K3s cluster
 
 The pipeline uses a multi-stage Dockerfile that separates the build environment from the runtime image, resulting in a smaller and more secure final container. The runtime stage runs as a non-root user with a built-in Docker healthcheck.
