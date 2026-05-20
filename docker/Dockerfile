@@ -5,7 +5,7 @@ WORKDIR /build
 
 COPY app/requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --target=/install
 
 #Stage 2 - Runtime
 FROM python:3.9-slim AS runtime
@@ -16,7 +16,7 @@ RUN groupadd -r appuser && useradd -r -g appuser appuser
 WORKDIR /app
 
 #Copy only the installed packages from builder
-COPY --from=builder /install /usr/local
+COPY --from=builder /install /usr/local/lib/python3.9/site-packages/
 
 #Copy application code
 COPY app/ .
