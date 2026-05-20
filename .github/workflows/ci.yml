@@ -10,7 +10,7 @@ env:
 
 jobs:
     build-and-push:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         permissions:
             contents: read
             packages: write
@@ -35,7 +35,7 @@ jobs:
                     tags: ghcr.io/conloyles/inventory-api:latest
 
     deploy: 
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         needs: build-and-push
 
         steps: 
