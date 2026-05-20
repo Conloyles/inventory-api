@@ -22,7 +22,7 @@ COPY --from=builder /install /usr/local/lib/python3.9/site-packages/
 COPY app/ .
 
 #Set ownership
-RUN CHOWN -R appuser:appuser /app
+RUN chown -R appuser:appuser /app
 
 #Switch to non-root user
 USER appuser
