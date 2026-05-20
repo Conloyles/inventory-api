@@ -17,7 +17,7 @@ spec:
       serviceAccountName: inventory-api-sa
       containers:
       - name: inventory-api
-        image: inventory-api:v5
+        image: inventory-api:v6
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
