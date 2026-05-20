@@ -36,7 +36,7 @@ If you see any issues, explain what they might mean and suggest what to check ne
 """
     
     response = requests.post(
-        "http://localhost:11434/api/generate",
+        "http://10.0.0.135:11434/api/generate",
         json={
             "model": "mistral",
             "prompt": prompt,
