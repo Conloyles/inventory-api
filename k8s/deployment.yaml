@@ -17,8 +17,8 @@ spec:
       serviceAccountName: inventory-api-sa
       containers:
       - name: inventory-api
-        image: inventory-api:v6
-        imagePullPolicy: Never
+        image: image: ghcr.io/conloyles/inventory-api:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
         resources:
