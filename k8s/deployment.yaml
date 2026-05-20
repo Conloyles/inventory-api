@@ -19,7 +19,7 @@ spec:
       - name: ghcr-secret
       containers:
       - name: inventory-api
-        image: image: ghcr.io/conloyles/inventory-api:latest
+        image: ghcr.io/conloyles/inventory-api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
