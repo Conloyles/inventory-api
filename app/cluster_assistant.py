@@ -1,5 +1,8 @@
-import requests
+import requests, os
 from kubernetes import client, config
+
+OLLAMA_URL = os.environ.get("OLLAMA_HOST_URL", "http://10.0.0.135:11434")
+
 
 def get_cluster_state():
     config.load_incluster_config()
@@ -34,9 +37,9 @@ Answer this question clearly and concisely:
 
 If you see any issues, explain what they might mean and suggest what to check next.
 """
-    
+
     response = requests.post(
-        "http://10.0.0.135:11434/api/generate",
+        f"{OLLAMA_URL}/api/generate",
         json={
             "model": "mistral",
             "prompt": prompt,

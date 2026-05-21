@@ -23,6 +23,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
+        env:
+        - name: OLLAMA_HOST_URL
+          value: "http://10.0.0.135:11434"
         resources:
           requests:
             memory: "64Mi"
@@ -30,5 +33,3 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-            #test
-            
