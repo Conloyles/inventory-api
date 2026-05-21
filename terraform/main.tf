@@ -16,8 +16,8 @@ resource "aws_s3_bucket" "inventory_state" {
     bucket = "connor-inventory-api-tf-state"
 
     tags = {
-        Name            = "inventory_api_tf_state"
-        Environtment    = "dev" 
+        Name            = "inventory-api-tf-state"
+        Environment    = "dev" 
         Project         = "inventory-api"
     }
 }
